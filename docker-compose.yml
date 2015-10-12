@@ -1,0 +1,15 @@
+web:
+  build: .
+  volumes:
+    - .:/app
+  ports:
+    - "3000:3000"
+  links:
+    - db
+    - redis
+db:
+  image: library/mysql:5.6.22
+  environment:
+    MYSQL_ROOT_PASSWORD: password # required by mysql image
+redis:
+  image: redis
